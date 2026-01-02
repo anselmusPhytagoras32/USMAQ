@@ -1,20 +1,39 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.2.1' // Standard Spring Boot version
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
-group = 'org.example'
-version = '1.0-SNAPSHOT'
+group = 'com.usmaq'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17' // Or '21' if you have the latest Java
+}
 
 repositories {
-    mavenCentral()
+    mavenCentral() // Tells Gradle to download libraries from the central web store
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    // 1. The Core Web Engine (Tomcat, REST APIs)
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // 2. Security (Login, Passwords)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // 3. Database (PostgreSQL + JPA)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // 4. Validation (Checking if inputs are safe)
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // 5. Testing Tools (For later)
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
-test {
+tasks.named('test') {
     useJUnitPlatform()
 }
