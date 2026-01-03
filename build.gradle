@@ -24,7 +24,7 @@ dependencies {
 
     // 3. Database (PostgreSQL + JPA)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    runtimeOnly 'org.postgresql:postgresql'
+    runtimeOnly 'com.mysql:mysql-connector-j'
 
     // 4. Validation (Checking if inputs are safe)
     implementation 'org.springframework.boot:spring-boot-starter-validation'
@@ -32,6 +32,7 @@ dependencies {
     // 5. Testing Tools (For later)
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
+
 }
 
 tasks.named('test') {
