@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    /* 1. Environment & Output */
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+
+    /* 2. React Support */
+    "jsx": "react-jsx",             // CRITICAL: Enables writing HTML tags (JSX) inside .tsx files.
+
+    /* 3. Type Safety */
+    "strict": true,                 // CRITICAL: The "Master Switch" for safety. Keeps it on to prevent 90% of bugs.
+    "noImplicitAny": true,
+
+    /* 4. Build Configuration */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,                 // IMPORTANT: Tells TypeScript "Don't create .js files." Vite handles the building; this is just for error checking.
+
+    /* 5. Path Aliases */
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]            // USEFUL: Lets you import from "@/components" instead of "../../components".
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
