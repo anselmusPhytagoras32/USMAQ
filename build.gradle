@@ -22,7 +22,7 @@ dependencies {
     // 2. Security (Login, Passwords)
     implementation 'org.springframework.boot:spring-boot-starter-security'
 
-    // 3. Database (PostgreSQL + JPA)
+    // 3. Database (MySQL + JPA)
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     runtimeOnly 'com.mysql:mysql-connector-j'
 
