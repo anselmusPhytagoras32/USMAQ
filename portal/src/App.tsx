@@ -1,10 +1,13 @@
 import "./App.css"
+import BaseForm from "./components/BaseForm.tsx";
 
 function App(){
     return(
-        <main style={{ padding: '40px 0', textAlign: 'center' }}>
+        <main>
             <h1>USMAQ</h1>
+            <BaseForm/>
         </main>
-    );
+);
+
 }
 export default App;
