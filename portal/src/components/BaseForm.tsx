@@ -20,10 +20,10 @@ const BaseForm = () => {
 
     return (
         <div>
-            {/* 1. We attach the submit handler here */}
+            {/*We attach the submit handler here */}
             <form className="form" onSubmit={handleSubmit}>
 
-                {/* Field 1 */}
+                {}
                 <div className="form_group">
                     <label htmlFor="patient_name" className="form_label">
                         Patient Name:
@@ -36,7 +36,7 @@ const BaseForm = () => {
                     />
                 </div>
 
-                {/* Field 2 */}
+                {}
                 <div className="form_group">
                     <label htmlFor="patient_age" className="form_label">
                         Patient Age:
@@ -49,7 +49,7 @@ const BaseForm = () => {
                     />
                 </div>
 
-                {/* Field 3 */}
+                {}
                 <div className="form_group">
                     <label htmlFor="patient_email" className="form_label">
                         Email:
@@ -62,7 +62,7 @@ const BaseForm = () => {
                     />
                 </div>
 
-                {/* You need a button to trigger the submit */}
+                {}
                 <Button ></Button>
             </form>
         </div>
