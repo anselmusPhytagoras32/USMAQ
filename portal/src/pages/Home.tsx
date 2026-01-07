@@ -1,11 +1,14 @@
 import React from 'react';
+import ConnectionTest from "@/components/ConnectionTest.tsx";
 
 function Home() {
     return (
         <div>
             <h1>Homepage</h1>
+            <ConnectionTest/>
         </div>
     );
 }
 
 export default Home;
+
