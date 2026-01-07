@@ -14,7 +14,7 @@ The name stands for **Unified System for Medical Access & Quality**, reflecting 
 Many hospitals in **Legazpi City** and the Bicol region are still stuck in the past:
 * **Paper-Based Chaos:** Patient records are stored in physical folders, leading to lost data and slow retrieval times.
 * **Inefficient Queues:** Patients wait hours just to have their files manually located.
-* ** fragmented History:** Doctors cannot easily see a patient's past diagnoses or prescriptions if the paper file is missing.
+* **fragmented History:** Doctors cannot easily see a patient's past diagnoses or prescriptions if the paper file is missing.
 * **Security Risks:** Physical records are vulnerable to damage (floods, fire) and unauthorized access.
 
 ## The Solution
