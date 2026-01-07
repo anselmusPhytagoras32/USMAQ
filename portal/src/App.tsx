@@ -4,6 +4,7 @@ import BaseForm from "./components/BaseForm.tsx";
 import {Button} from "@mui/material";
 import Home from "./pages/Home.tsx";
 import Patient from "./pages/Patient.tsx";
+import Settings from "@/pages/Settings.tsx";
 
 function App(){
     return(
@@ -14,10 +15,12 @@ function App(){
                 <nav>
                     <Link to ="/">Home</Link> |{' '}
                     <Link to ="/Patient">Patient</Link> |{' '}
+                    <Link to ="/Settings">Settings</Link> |{' '}
                 </nav>
               <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/Patient" element={<Patient/>} />
+                    <Route path="/Settings" element={<Settings/>} />
               </Routes>
             </BrowserRouter>
 
