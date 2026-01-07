@@ -26,6 +26,9 @@ hs_err_pid*
 .gradle/
 build/
 
+# Portal cache
+node_modules/
+
 # IntelliJ IDEA files
 .idea/
 *.iml
