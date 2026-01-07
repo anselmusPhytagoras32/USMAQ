@@ -20,7 +20,8 @@ Many hospitals in **Legazpi City** and the Bicol region are still stuck in the p
 ## The Solution
 USMAQ replaces the filing cabinet with a secure, cloud-ready database.
 * **Instant Retrieval:** Search for a patient by name in milliseconds, not minutes.
-* **Role-Based Access:** * **Receptionists** handle registration, billing, and queuing.
+* **Role-Based Access:** 
+    * **Receptionists** handle registration, billing, and queuing.
     * **Doctors** access private medical history, diagnoses, and prescriptions.
 * **Data Integrity:** No more "lost files." Every diagnosis and prescription is permanently recorded.
 * **Scalable:** Built to handle thousands of records without slowing down.
@@ -61,3 +62,7 @@ USMAQ replaces the filing cabinet with a secure, cloud-ready database.
 * **Digital Diagnosis:** Input and save medical findings directly to the patient's permanent record.
 * **E-Prescribing:** (In Progress) Generate and record prescriptions digitally.
 * **Patient History:** View a timeline of previous visits and treatments.
+---
+## Status
+>**Under development**
+
