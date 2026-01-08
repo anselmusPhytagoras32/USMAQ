@@ -10,12 +10,15 @@ interface InputFieldProps {
 const InputField = ({label, name, type = "text"}:InputFieldProps) => {
     return (
         <div>
-            <TextField id={label}
-                       variant="outlined"
-                       type={type}
-                       name={name} // key for data
-                       className="form_input"
-                       size={"small"}/>
+            <TextField
+                        label = {label}
+                        id={name}
+                        variant="outlined"
+                        type={type}
+                        name={name} // key for data
+                        className="form_input"
+                        size={"small"}
+                        margin="normal" />
         </div>
     );
 };

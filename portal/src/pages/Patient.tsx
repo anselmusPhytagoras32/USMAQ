@@ -1,10 +1,10 @@
 import React from 'react';
-import BaseForm from "@/components/BaseForm.tsx";
+import RegistrationForm from "@/components/RegistrationForm.tsx";
 
 function Patient() {
     return (
         <div>
-            <BaseForm/>
+            <RegistrationForm/>
         </div>
     );
 }
