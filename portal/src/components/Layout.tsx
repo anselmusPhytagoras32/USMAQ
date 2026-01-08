@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
-import NavBar from "./NavBar.tsx";
+import Sidebar from "./Sidebar.tsx";
+import AccountMenu from "@/components/AccountMenu.tsx";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -17,10 +18,12 @@ const Layout = ({ children }: LayoutProps) => {
                     <Typography variant="h6" noWrap component="div">
                         USMAQ Hospital System
                     </Typography>
+                    <Box sx={{ flexGrow: 1 }} />
+                    <AccountMenu></AccountMenu>
                 </Toolbar>
             </AppBar>
 
-            <NavBar />
+            <Sidebar />
 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <Toolbar /> {/* Spacer for the header */}

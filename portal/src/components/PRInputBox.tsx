@@ -7,7 +7,7 @@ interface InputFieldProps {
     type?: string;
 }
 
-const InputField = ({label, name, type = "text"}:InputFieldProps) => {
+const PRInputBox = ({label, name, type = "text"}:InputFieldProps) => {
     return (
         <div>
             <TextField
@@ -23,4 +23,4 @@ const InputField = ({label, name, type = "text"}:InputFieldProps) => {
     );
 };
 
-export default InputField;
+export default PRInputBox;

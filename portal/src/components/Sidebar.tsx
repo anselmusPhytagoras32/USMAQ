@@ -11,7 +11,7 @@ import CalendarToday from '@mui/icons-material/CalendarToday'
 
 const drawerWidth = 240;
 
-const NavBar = () => {
+const Sidebar = () => {
     return (
         <Drawer
             variant="permanent"
@@ -61,4 +61,4 @@ const NavBar = () => {
     );
 };
 
-export default NavBar;
+export default Sidebar;

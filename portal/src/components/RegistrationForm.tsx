@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from "@mui/material";
-import InputField from "@/components/InputField.tsx";
+import PRInputBox from "@/components/PRInputBox.tsx";
 
 
 const RegistrationForm = () => {
@@ -22,9 +22,9 @@ const RegistrationForm = () => {
     return (
         <div>
             <form>
-                <InputField label="Patient Name" name="patientName" />
-                <InputField label="Age" name="age" type="number" />
-                <InputField label="Address" name="address" />
+                <PRInputBox label="Patient Name" name="patientName" />
+                <PRInputBox label="Age" name="age" type="number" />
+                <PRInputBox label="Address" name="address" />
             </form>
         </div>
     );
