@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button} from "@mui/material";
+import InputField from "@/components/InputField.tsx";
 
 
 const BaseForm = () => {
@@ -25,15 +26,12 @@ const BaseForm = () => {
 
                 {}
                 <div className="form_group">
-                    <label htmlFor="patient_name" className="form_label">
-                        Patient Name:
-                    </label>
-                    <input
-                        type="text"
-                        id="patient_name"
-                        name="patientName" // Important: This is the key for data
-                        className="form_input"
-                    />
+                    <InputField>
+                        <label htmlFor="patient_name" className="form_label">
+                            Patient Name:
+                        </label>
+                    </InputField>
+
                 </div>
 
                 {}
