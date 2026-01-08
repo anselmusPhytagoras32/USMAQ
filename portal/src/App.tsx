@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Patient from "./pages/Patient";
 import Settings from "@/pages/Settings";
 import Layout from "@/components/Layout";
+import Appointments from "@/pages/Appointments.tsx";
 
 function App() {
     return (
@@ -12,6 +13,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home/>} />
                     <Route path="/Patient" element={<Patient/>} />
+                    <Route path="/Appointments" element={<Appointments/>} />
+
                     <Route path="/Settings" element={<Settings/>} />
                 </Routes>
             </Layout>

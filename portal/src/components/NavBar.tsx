@@ -2,11 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import {
     Drawer, List, ListItem, ListItemButton,
-    ListItemIcon, ListItemText, Toolbar, Divider
+    ListItemIcon, ListItemText, Toolbar, Divider, SpeedDialIcon
 } from '@mui/material';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings'
+import CalendarToday from '@mui/icons-material/CalendarToday'
 
 const drawerWidth = 240;
 
@@ -39,6 +40,13 @@ const NavBar = () => {
                     <ListItemButton component={Link} to="/Patient">
                         <ListItemIcon> <PeopleIcon /> </ListItemIcon>
                         <ListItemText primary="Patients" />
+                    </ListItemButton>
+                </ListItem>
+
+                <ListItem disablePadding>
+                    <ListItemButton component={Link} to="/Appointments">
+                        <ListItemIcon> <CalendarToday/> </ListItemIcon>
+                        <ListItemText primary="Appointments" />
                     </ListItemButton>
                 </ListItem>
 
