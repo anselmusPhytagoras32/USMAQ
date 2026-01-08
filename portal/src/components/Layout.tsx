@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography } from '@mui/material';
-import Sidebar from './NavBar.tsx';
+import NavBar from "./NavBar.tsx";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -20,7 +20,7 @@ const Layout = ({ children }: LayoutProps) => {
                 </Toolbar>
             </AppBar>
 
-            <Sidebar />
+            <NavBar />
 
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
                 <Toolbar /> {/* Spacer for the header */}
