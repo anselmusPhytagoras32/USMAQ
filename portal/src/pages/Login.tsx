@@ -30,7 +30,7 @@ const Login = () => {
                         borderRadius: 3, // Soft rounded corners
                     }}
                 >
-                    {/* Logo / Icon Area */}
+                    {/* Logo */}
                     <Box sx={{
                         m: 1,
                         bgcolor: 'primary.main',

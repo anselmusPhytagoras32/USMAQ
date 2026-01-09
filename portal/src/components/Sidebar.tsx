@@ -30,7 +30,7 @@ const Sidebar = () => {
             <List>
 
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/">
+                    <ListItemButton component={Link} to="/dashboard"> {/* Changed from "/" to "/dashboard" */}
                         <ListItemIcon> <DashboardIcon /> </ListItemIcon>
                         <ListItemText primary="Dashboard" />
                     </ListItemButton>

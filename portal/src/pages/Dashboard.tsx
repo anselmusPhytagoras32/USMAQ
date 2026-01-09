@@ -1,7 +1,7 @@
 import React from 'react';
 import ConnectionTest from "@/components/ConnectionTest.tsx";
 
-function Home() {
+function Dashboard() {
     return (
         <div>
             <h1>Homepage</h1>
@@ -9,5 +9,5 @@ function Home() {
     );
 }
 
-export default Home;
+export default Dashboard;
 
