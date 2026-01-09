@@ -12,7 +12,7 @@ const Settings = () => {
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
     // Allow the state itself to be null
-    const [testStatus, setTestStatus] = useState<{msg: string, type: 'success'|'error' | null} | null>(null);
+    const [testStatus, setTestStatus] = useState<{msg: string, type: 'success'|'error'|'info' | null} | null>(null);
 
     const handleLogout = () => {
         if(window.confirm("Are you sure you want to logout?")) {
@@ -20,15 +20,20 @@ const Settings = () => {
         }
     };
 
-    const handleTestConnection = () => {
-        // Simulate a backend ping
-        setTestStatus({ msg: "Testing connection...", type: null });
-        setTimeout(() => {
-            // Randomly succeed or fail for demo
-            const isSuccess = Math.random() > 0.2;
-            if(isSuccess) setTestStatus({ msg: "Connection to Spring Boot: SUCCESS (20ms)", type: "success" });
-            else setTestStatus({ msg: "Connection Failed: Backend unreachable", type: "error" });
-        }, 1500);
+    const handleTestConnection = async () => {
+        setTestStatus({ msg: "Testing connection...", type: 'info' });
+        try {
+            const response = await fetch('/api/test');
+            if (response.ok) {
+                const text = await response.text();
+                setTestStatus({ msg: `Connection to Spring Boot: SUCCESS (${text})`, type: "success" });
+            } else {
+                setTestStatus({ msg: `Connection Failed: ${response.status} ${response.statusText}`, type: "error" });
+            }
+        } catch (error) {
+            console.error("Connection failed", error);
+            setTestStatus({ msg: "Connection Failed: Backend unreachable", type: "error" });
+        }
     };
 
     return (

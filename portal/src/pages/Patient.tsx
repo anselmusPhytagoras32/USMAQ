@@ -111,36 +111,36 @@ const Patient = () => {
                     <Grid container spacing={2} sx={{ mt: 1 }}>
 
                         {/* SECTION 1: IDENTITY */}
-                        <Grid item xs={12}>
+                        <Grid size={{ xs: 12 }}>
                             <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>I. PERSONAL INFORMATION</Typography>
                         </Grid>
 
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <TextField fullWidth label="First Name" name="firstName" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <TextField fullWidth label="Middle Name" name="middleName" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <TextField fullWidth label="Last Name" name="lastName" onChange={handleChange} required />
                         </Grid>
 
-                        <Grid item xs={12} md={3}>
+                        <Grid size={{ xs: 12, md: 3 }}>
                             <TextField
                                 fullWidth type="date" label="Date of Birth" name="dob"
                                 InputLabelProps={{ shrink: true }} onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item xs={6} md={2}>
+                        <Grid size={{ xs: 6, md: 2 }}>
                             <TextField fullWidth label="Age" name="age" type="number" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={6} md={3}>
+                        <Grid size={{ xs: 6, md: 3 }}>
                             <TextField select fullWidth label="Sex" name="sex" defaultValue="" onChange={handleChange}>
                                 <MenuItem value="Male">Male</MenuItem>
                                 <MenuItem value="Female">Female</MenuItem>
                             </TextField>
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <TextField select fullWidth label="Civil Status" name="civilStatus" defaultValue="" onChange={handleChange}>
                                 <MenuItem value="Single">Single</MenuItem>
                                 <MenuItem value="Married">Married</MenuItem>
@@ -149,31 +149,31 @@ const Patient = () => {
                         </Grid>
 
                         {/* SECTION 2: CONTACT & GOV */}
-                        <Grid item xs={12} sx={{ mt: 2 }}>
+                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
                             <Divider />
                             <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>II. CONTACT & ADDRESS</Typography>
                         </Grid>
 
-                        <Grid item xs={12} md={8}>
+                        <Grid size={{ xs: 12, md: 8 }}>
                             <TextField fullWidth label="Permanent Address (House No, Street, Brgy, City)" name="address" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={12} md={4}>
+                        <Grid size={{ xs: 12, md: 4 }}>
                             <TextField fullWidth label="Contact Number (+63)" name="phone" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <TextField fullWidth label="PhilHealth Number" name="philHealth" onChange={handleChange} />
                         </Grid>
-                        <Grid item xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <TextField fullWidth label="Emergency Contact Name & Phone" name="emergency" onChange={handleChange} />
                         </Grid>
 
                         {/* SECTION 3: PREVIOUS VISITS */}
-                        <Grid item xs={12} sx={{ mt: 2 }}>
+                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
                             <Divider />
                             <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>III. MEDICAL HISTORY (Optional)</Typography>
                         </Grid>
 
-                        <Grid item xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <TextField
                                 fullWidth label="Previous Hospital / Clinic Visited"
                                 name="previousHospital"
@@ -181,7 +181,7 @@ const Patient = () => {
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid item xs={12} md={6}>
+                        <Grid size={{ xs: 12, md: 6 }}>
                             <TextField
                                 fullWidth label="Previous Date of Visit"
                                 type="date"
