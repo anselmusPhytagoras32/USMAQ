@@ -12,8 +12,8 @@ function App() {
     return (
         <BrowserRouter>
             <Routes>
-                {/* replace /login to dashboard to bypass*/}
-                <Route path="/" element={<Navigate to="/login" replace />} />
+                {/* This ensures that we are directed to the login page*/}
+                {/*<Route path="/" element={<Navigate to="/login" replace/>}/>*/}
 
                 {/* Public Routes (No Sidebar) */}
                 <Route path="/login" element={<Login />} />
