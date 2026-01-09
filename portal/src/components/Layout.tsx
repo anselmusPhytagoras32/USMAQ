@@ -3,7 +3,6 @@ import { Box, CssBaseline, AppBar, Toolbar, Typography, IconButton } from '@mui/
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "./Sidebar.tsx";
 import AccountMenu from "@/components/AccountMenu.tsx";
-import SearchAppBar from "@/components/SearchBar.tsx";
 
 type LayoutProps = {
     children: React.ReactNode;
@@ -41,9 +40,6 @@ const Layout = ({ children }: LayoutProps) => {
                             USMAQ
                         </Typography>
                     </Box>
-
-                    {/* MIDDLE: Search Bar */}
-                    <SearchAppBar />
 
                     {/* RIGHT: Account Menu */}
                     <AccountMenu />

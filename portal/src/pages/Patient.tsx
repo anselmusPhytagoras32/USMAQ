@@ -74,22 +74,22 @@ const Patient = () => {
                     <Table>
                         <TableHead>
                             <TableRow sx={{ bgcolor: '#f5f5f5' }}>
-                                <TableCell><b>ID</b></TableCell>
+                                <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}><b>ID</b></TableCell>
                                 <TableCell><b>Full Name</b></TableCell>
                                 <TableCell><b>Age / Sex</b></TableCell>
-                                <TableCell><b>Address</b></TableCell>
-                                <TableCell><b>Last Visit</b></TableCell>
+                                <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}><b>Address</b></TableCell>
+                                <TableCell sx={{ display: { xs: 'none', lg: 'table-cell' } }}><b>Last Visit</b></TableCell>
                                 <TableCell align="right"><b>Actions</b></TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {filteredPatients.map((row) => (
                                 <TableRow key={row.id} hover>
-                                    <TableCell>{row.id}</TableCell>
+                                    <TableCell sx={{ display: { xs: 'none', sm: 'table-cell' } }}>{row.id}</TableCell>
                                     <TableCell sx={{ fontWeight: 'bold', color: '#1976d2' }}>{row.name}</TableCell>
                                     <TableCell>{row.age} / {row.sex}</TableCell>
-                                    <TableCell>{row.address}</TableCell>
-                                    <TableCell>{row.lastVisit}</TableCell>
+                                    <TableCell sx={{ display: { xs: 'none', md: 'table-cell' } }}>{row.address}</TableCell>
+                                    <TableCell sx={{ display: { xs: 'none', lg: 'table-cell' } }}>{row.lastVisit}</TableCell>
                                     <TableCell align="right">
                                         <IconButton color="primary" size="small"><EditIcon /></IconButton>
                                         <IconButton color="error" size="small"><DeleteIcon /></IconButton>
@@ -111,36 +111,36 @@ const Patient = () => {
                     <Grid container spacing={2} sx={{ mt: 1 }}>
 
                         {/* SECTION 1: IDENTITY */}
-                        <Grid size={{ xs: 12 }}>
+                        <Grid item xs={12}>
                             <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>I. PERSONAL INFORMATION</Typography>
                         </Grid>
 
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid item xs={12} md={4}>
                             <TextField fullWidth label="First Name" name="firstName" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid item xs={12} md={4}>
                             <TextField fullWidth label="Middle Name" name="middleName" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid item xs={12} md={4}>
                             <TextField fullWidth label="Last Name" name="lastName" onChange={handleChange} required />
                         </Grid>
 
-                        <Grid size={{ xs: 12, md: 3 }}>
+                        <Grid item xs={12} md={3}>
                             <TextField
                                 fullWidth type="date" label="Date of Birth" name="dob"
                                 InputLabelProps={{ shrink: true }} onChange={handleChange}
                             />
                         </Grid>
-                        <Grid size={{ xs: 6, md: 2 }}>
+                        <Grid item xs={6} md={2}>
                             <TextField fullWidth label="Age" name="age" type="number" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 6, md: 3 }}>
+                        <Grid item xs={6} md={3}>
                             <TextField select fullWidth label="Sex" name="sex" defaultValue="" onChange={handleChange}>
                                 <MenuItem value="Male">Male</MenuItem>
                                 <MenuItem value="Female">Female</MenuItem>
                             </TextField>
                         </Grid>
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid item xs={12} md={4}>
                             <TextField select fullWidth label="Civil Status" name="civilStatus" defaultValue="" onChange={handleChange}>
                                 <MenuItem value="Single">Single</MenuItem>
                                 <MenuItem value="Married">Married</MenuItem>
@@ -149,31 +149,31 @@ const Patient = () => {
                         </Grid>
 
                         {/* SECTION 2: CONTACT & GOV */}
-                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
+                        <Grid item xs={12} sx={{ mt: 2 }}>
                             <Divider />
                             <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>II. CONTACT & ADDRESS</Typography>
                         </Grid>
 
-                        <Grid size={{ xs: 12, md: 8 }}>
+                        <Grid item xs={12} md={8}>
                             <TextField fullWidth label="Permanent Address (House No, Street, Brgy, City)" name="address" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 4 }}>
+                        <Grid item xs={12} md={4}>
                             <TextField fullWidth label="Contact Number (+63)" name="phone" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid item xs={12} md={6}>
                             <TextField fullWidth label="PhilHealth Number" name="philHealth" onChange={handleChange} />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid item xs={12} md={6}>
                             <TextField fullWidth label="Emergency Contact Name & Phone" name="emergency" onChange={handleChange} />
                         </Grid>
 
                         {/* SECTION 3: PREVIOUS VISITS */}
-                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
+                        <Grid item xs={12} sx={{ mt: 2 }}>
                             <Divider />
                             <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>III. MEDICAL HISTORY (Optional)</Typography>
                         </Grid>
 
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid item xs={12} md={6}>
                             <TextField
                                 fullWidth label="Previous Hospital / Clinic Visited"
                                 name="previousHospital"
@@ -181,7 +181,7 @@ const Patient = () => {
                                 onChange={handleChange}
                             />
                         </Grid>
-                        <Grid size={{ xs: 12, md: 6 }}>
+                        <Grid item xs={12} md={6}>
                             <TextField
                                 fullWidth label="Previous Date of Visit"
                                 type="date"
