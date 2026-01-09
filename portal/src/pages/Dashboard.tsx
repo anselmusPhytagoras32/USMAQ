@@ -28,13 +28,13 @@ const Home = () => {
 
             {/* TOP STATS */}
             <Grid container spacing={3} sx={{ mb: 4 }}>
-                <Grid size = {{xs: 12, sm: 6, md: 4}}>
+                <Grid item xs={12} sm={6} md={4}>
                     <StatCard title="Patients in Queue" value="12" icon={<PeopleIcon />} color="warning" />
                 </Grid>
-                <Grid size = {{xs: 12, sm: 6, md: 4}}>
+                <Grid item xs={12} sm={6} md={4}>
                     <StatCard title="Total Patients (Month)" value="452" icon={<AssignmentTurnedInIcon />} color="primary" />
                 </Grid>
-                <Grid size = {{xs: 12, sm: 6, md: 4}}>
+                <Grid item xs={12} sm={6} md={4}>
                     <StatCard title="Active Doctors" value="3/5" icon={<MedicalServicesIcon />} color="success" />
                 </Grid>
             </Grid>
