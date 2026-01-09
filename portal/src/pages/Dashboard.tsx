@@ -42,37 +42,39 @@ const Home = () => {
             {/* QUEUE PREVIEW */}
             <Paper sx={{ p: 3 }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>Live Queue Status</Typography>
-                <Table>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Ticket #</TableCell>
-                            <TableCell>Patient Name</TableCell>
-                            <TableCell>Time In</TableCell>
-                            <TableCell>Status</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {/*To be removed later*/}
-                        {[
-                            { id: 'A-101', name: 'Maria Santos', time: '08:30 AM', status: 'In Consultation' },
-                            { id: 'A-102', name: 'Juan Dela Cruz', time: '08:45 AM', status: 'Waiting' },
-                            { id: 'A-103', name: 'Pedro Penduko', time: '09:00 AM', status: 'Waiting' },
-                        ].map((row) => (
-                            <TableRow key={row.id}>
-                                <TableCell><b>{row.id}</b></TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.time}</TableCell>
-                                <TableCell>
-                                    <Chip
-                                        label={row.status}
-                                        color={row.status === 'Waiting' ? 'warning' : 'success'}
-                                        size="small"
-                                    />
-                                </TableCell>
+                <Box sx={{ overflowX: 'auto' }}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Ticket #</TableCell>
+                                <TableCell>Patient Name</TableCell>
+                                <TableCell>Time In</TableCell>
+                                <TableCell>Status</TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHead>
+                        <TableBody>
+                            {/*To be removed later*/}
+                            {[
+                                { id: 'A-101', name: 'Maria Santos', time: '08:30 AM', status: 'In Consultation' },
+                                { id: 'A-102', name: 'Juan Dela Cruz', time: '08:45 AM', status: 'Waiting' },
+                                { id: 'A-103', name: 'Pedro Penduko', time: '09:00 AM', status: 'Waiting' },
+                            ].map((row) => (
+                                <TableRow key={row.id}>
+                                    <TableCell><b>{row.id}</b></TableCell>
+                                    <TableCell>{row.name}</TableCell>
+                                    <TableCell>{row.time}</TableCell>
+                                    <TableCell>
+                                        <Chip
+                                            label={row.status}
+                                            color={row.status === 'Waiting' ? 'warning' : 'success'}
+                                            size="small"
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Box>
             </Paper>
         </Box>
     );
