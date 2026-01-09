@@ -43,7 +43,7 @@ const Patient = () => {
     return (
         <Box>
             {/* HEADER */}
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3, alignItems: 'center' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3, alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
                 <Typography variant="h5" fontWeight="600">Patient Records</Typography>
                 <Button
                     variant="contained"
@@ -70,33 +70,35 @@ const Patient = () => {
 
             {/* TABLE */}
             <Paper>
-                <Table>
-                    <TableHead>
-                        <TableRow sx={{ bgcolor: '#f5f5f5' }}>
-                            <TableCell><b>ID</b></TableCell>
-                            <TableCell><b>Full Name</b></TableCell>
-                            <TableCell><b>Age / Sex</b></TableCell>
-                            <TableCell><b>Address</b></TableCell>
-                            <TableCell><b>Last Visit</b></TableCell>
-                            <TableCell align="right"><b>Actions</b></TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {filteredPatients.map((row) => (
-                            <TableRow key={row.id} hover>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell sx={{ fontWeight: 'bold', color: '#1976d2' }}>{row.name}</TableCell>
-                                <TableCell>{row.age} / {row.sex}</TableCell>
-                                <TableCell>{row.address}</TableCell>
-                                <TableCell>{row.lastVisit}</TableCell>
-                                <TableCell align="right">
-                                    <IconButton color="primary" size="small"><EditIcon /></IconButton>
-                                    <IconButton color="error" size="small"><DeleteIcon /></IconButton>
-                                </TableCell>
+                <Box sx={{ overflowX: 'auto' }}>
+                    <Table>
+                        <TableHead>
+                            <TableRow sx={{ bgcolor: '#f5f5f5' }}>
+                                <TableCell><b>ID</b></TableCell>
+                                <TableCell><b>Full Name</b></TableCell>
+                                <TableCell><b>Age / Sex</b></TableCell>
+                                <TableCell><b>Address</b></TableCell>
+                                <TableCell><b>Last Visit</b></TableCell>
+                                <TableCell align="right"><b>Actions</b></TableCell>
                             </TableRow>
-                        ))}
-                    </TableBody>
-                </Table>
+                        </TableHead>
+                        <TableBody>
+                            {filteredPatients.map((row) => (
+                                <TableRow key={row.id} hover>
+                                    <TableCell>{row.id}</TableCell>
+                                    <TableCell sx={{ fontWeight: 'bold', color: '#1976d2' }}>{row.name}</TableCell>
+                                    <TableCell>{row.age} / {row.sex}</TableCell>
+                                    <TableCell>{row.address}</TableCell>
+                                    <TableCell>{row.lastVisit}</TableCell>
+                                    <TableCell align="right">
+                                        <IconButton color="primary" size="small"><EditIcon /></IconButton>
+                                        <IconButton color="error" size="small"><DeleteIcon /></IconButton>
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </Box>
             </Paper>
 
             {/* --- REGISTRATION FORM (The Update) --- */}

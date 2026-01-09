@@ -37,8 +37,8 @@ const Layout = ({ children }: LayoutProps) => {
                             <MenuIcon />
                         </IconButton>
 
-                        <Typography variant="h6" noWrap component="div">
-                            USMAQ Hospital System
+                        <Typography variant="h6" noWrap component="div" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                            USMAQ
                         </Typography>
                     </Box>
 
@@ -53,7 +53,7 @@ const Layout = ({ children }: LayoutProps) => {
 
             <Sidebar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
 
-            <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - 240px)` } }}>
+            <Box component="main" sx={{ flexGrow: 1, p: { xs: 2, sm: 3 }, width: { sm: `calc(100% - 240px)` } }}>
                 <Toolbar />
                 {children}
             </Box>

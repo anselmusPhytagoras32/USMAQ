@@ -53,7 +53,7 @@ const Appointments = () => {
 
                                 <ListItemText
                                     primary={
-                                        <Box display="flex" alignItems="center" gap={1}>
+                                        <Box display="flex" alignItems="center" gap={1} flexWrap="wrap">
                                             <Typography variant="subtitle1" fontWeight="bold">
                                                 {item.name}
                                             </Typography>
