@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import {
     Box, Typography, Button, TextField, Paper, Table,
     TableBody, TableCell, TableHead, TableRow, IconButton,
-    Dialog, DialogTitle, DialogContent, DialogActions
+    Dialog, DialogTitle, DialogContent, DialogActions, Grid,
+    MenuItem, InputAdornment, Divider
 } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
+import EventIcon from '@mui/icons-material/Event';
 
-// To be removed later
+// Mock Data
 const MOCK_PATIENTS = [
-    { id: 1, name: 'Juan Dela Cruz', age: 45, address: 'Legazpi City', phone: '0917-111-2222' },
-    { id: 2, name: 'Maria Clara', age: 28, address: 'Daraga, Albay', phone: '0918-333-4444' },
-    { id: 3, name: 'Jose Rizal', age: 35, address: 'Tabaco City', phone: '0919-555-6666' },
+    { id: 1, name: 'Juan Dela Cruz', age: 45, sex: 'Male', address: 'Legazpi City', lastVisit: '2024-12-01' },
+    { id: 2, name: 'Maria Clara', age: 28, sex: 'Female', address: 'Daraga, Albay', lastVisit: '2025-01-10' },
 ];
 
 const Patient = () => {
@@ -21,91 +22,180 @@ const Patient = () => {
     const [search, setSearch] = useState('');
     const [openRegister, setOpenRegister] = useState(false);
 
+    // Form State (Captured all standard hospital fields)
+    const [formData, setFormData] = useState({
+        firstName: '', middleName: '', lastName: '',
+        dob: '', age: '', sex: '', civilStatus: '',
+        address: '', phone: '', philHealth: '',
+        emergencyName: '', emergencyPhone: '',
+        previousHospital: '', previousDiagnosis: ''
+    });
+
     // Filter Logic
     const filteredPatients = patients.filter(p =>
         p.name.toLowerCase().includes(search.toLowerCase())
     );
 
-    // Delete Logic
-    const handleDelete = (id: number) => {
-        if(window.confirm("Are you sure you want to delete this record?")) {
-            setPatients(patients.filter(p => p.id !== id));
-        }
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     return (
         <Box>
-            {/* HEADER WITH SEARCH AND ADD BUTTON */}
+            {/* HEADER */}
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3, alignItems: 'center' }}>
                 <Typography variant="h5" fontWeight="600">Patient Records</Typography>
                 <Button
                     variant="contained"
+                    size="large"
                     startIcon={<AddIcon />}
                     onClick={() => setOpenRegister(true)}
                 >
-                    Register Patient
+                    New Admission
                 </Button>
             </Box>
 
-            {/* SEARCH BAR */}
+            {/* SEARCH */}
             <Paper sx={{ p: 2, mb: 3, display: 'flex', alignItems: 'center' }}>
                 <SearchIcon sx={{ color: 'text.secondary', mr: 2 }} />
                 <TextField
                     fullWidth
                     variant="standard"
-                    placeholder="Search by name..."
+                    placeholder="Search by Name, PhilHealth ID, or Date of Birth..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                     InputProps={{ disableUnderline: true }}
                 />
             </Paper>
 
-            {/* PATIENT TABLE */}
+            {/* TABLE */}
             <Paper>
                 <Table>
                     <TableHead>
-                        <TableRow>
-                            <TableCell>ID</TableCell>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Age</TableCell>
-                            <TableCell>Contact</TableCell>
-                            <TableCell align="right">Actions</TableCell>
+                        <TableRow sx={{ bgcolor: '#f5f5f5' }}>
+                            <TableCell><b>ID</b></TableCell>
+                            <TableCell><b>Full Name</b></TableCell>
+                            <TableCell><b>Age / Sex</b></TableCell>
+                            <TableCell><b>Address</b></TableCell>
+                            <TableCell><b>Last Visit</b></TableCell>
+                            <TableCell align="right"><b>Actions</b></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {filteredPatients.length > 0 ? filteredPatients.map((row) => (
-                            <TableRow key={row.id}>
+                        {filteredPatients.map((row) => (
+                            <TableRow key={row.id} hover>
                                 <TableCell>{row.id}</TableCell>
-                                <TableCell sx={{ fontWeight: 'bold' }}>{row.name}</TableCell>
-                                <TableCell>{row.age}</TableCell>
-                                <TableCell>{row.phone}</TableCell>
+                                <TableCell sx={{ fontWeight: 'bold', color: '#1976d2' }}>{row.name}</TableCell>
+                                <TableCell>{row.age} / {row.sex}</TableCell>
+                                <TableCell>{row.address}</TableCell>
+                                <TableCell>{row.lastVisit}</TableCell>
                                 <TableCell align="right">
-                                    <IconButton color="primary"><EditIcon /></IconButton>
-                                    <IconButton color="error" onClick={() => handleDelete(row.id)}>
-                                        <DeleteIcon />
-                                    </IconButton>
+                                    <IconButton color="primary" size="small"><EditIcon /></IconButton>
+                                    <IconButton color="error" size="small"><DeleteIcon /></IconButton>
                                 </TableCell>
                             </TableRow>
-                        )) : (
-                            <TableRow>
-                                <TableCell colSpan={5} align="center">No patients found.</TableCell>
-                            </TableRow>
-                        )}
+                        ))}
                     </TableBody>
                 </Table>
             </Paper>
 
-            {/* REGISTER MODAL (Simple UI) */}
-            <Dialog open={openRegister} onClose={() => setOpenRegister(false)} fullWidth maxWidth="sm">
-                <DialogTitle>Register New Patient</DialogTitle>
-                <DialogContent>
-                    <TextField autoFocus margin="dense" label="Full Name" fullWidth variant="outlined" sx={{ mb: 2 }} />
-                    <TextField margin="dense" label="Age" type="number" fullWidth variant="outlined" sx={{ mb: 2 }} />
-                    <TextField margin="dense" label="Address" fullWidth variant="outlined" />
+            {/* --- REGISTRATION FORM (The Update) --- */}
+            <Dialog open={openRegister} onClose={() => setOpenRegister(false)} fullWidth maxWidth="md">
+                <DialogTitle sx={{ bgcolor: '#1976d2', color: 'white' }}>
+                    Patient Registration Form
+                </DialogTitle>
+
+                <DialogContent dividers>
+                    <Grid container spacing={2} sx={{ mt: 1 }}>
+
+                        {/* SECTION 1: IDENTITY */}
+                        <Grid size={{ xs: 12 }}>
+                            <Typography variant="subtitle2" color="primary" sx={{ mb: 1 }}>I. PERSONAL INFORMATION</Typography>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField fullWidth label="First Name" name="firstName" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField fullWidth label="Middle Name" name="middleName" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField fullWidth label="Last Name" name="lastName" onChange={handleChange} required />
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 3 }}>
+                            <TextField
+                                fullWidth type="date" label="Date of Birth" name="dob"
+                                InputLabelProps={{ shrink: true }} onChange={handleChange}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 6, md: 2 }}>
+                            <TextField fullWidth label="Age" name="age" type="number" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 6, md: 3 }}>
+                            <TextField select fullWidth label="Sex" name="sex" defaultValue="" onChange={handleChange}>
+                                <MenuItem value="Male">Male</MenuItem>
+                                <MenuItem value="Female">Female</MenuItem>
+                            </TextField>
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField select fullWidth label="Civil Status" name="civilStatus" defaultValue="" onChange={handleChange}>
+                                <MenuItem value="Single">Single</MenuItem>
+                                <MenuItem value="Married">Married</MenuItem>
+                                <MenuItem value="Widowed">Widowed</MenuItem>
+                            </TextField>
+                        </Grid>
+
+                        {/* SECTION 2: CONTACT & GOV */}
+                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
+                            <Divider />
+                            <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>II. CONTACT & ADDRESS</Typography>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 8 }}>
+                            <TextField fullWidth label="Permanent Address (House No, Street, Brgy, City)" name="address" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 4 }}>
+                            <TextField fullWidth label="Contact Number (+63)" name="phone" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField fullWidth label="PhilHealth Number" name="philHealth" onChange={handleChange} />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField fullWidth label="Emergency Contact Name & Phone" name="emergency" onChange={handleChange} />
+                        </Grid>
+
+                        {/* SECTION 3: PREVIOUS VISITS */}
+                        <Grid size={{ xs: 12 }} sx={{ mt: 2 }}>
+                            <Divider />
+                            <Typography variant="subtitle2" color="primary" sx={{ mt: 2, mb: 1 }}>III. MEDICAL HISTORY (Optional)</Typography>
+                        </Grid>
+
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth label="Previous Hospital / Clinic Visited"
+                                name="previousHospital"
+                                placeholder="e.g. BRHMC, Estevez"
+                                onChange={handleChange}
+                            />
+                        </Grid>
+                        <Grid size={{ xs: 12, md: 6 }}>
+                            <TextField
+                                fullWidth label="Previous Date of Visit"
+                                type="date"
+                                InputLabelProps={{ shrink: true }}
+                                name="previousDate"
+                            />
+                        </Grid>
+
+                    </Grid>
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={() => setOpenRegister(false)}>Cancel</Button>
-                    <Button variant="contained" onClick={() => setOpenRegister(false)}>Register</Button>
+
+                <DialogActions sx={{ p: 2 }}>
+                    <Button onClick={() => setOpenRegister(false)} color="inherit">Cancel</Button>
+                    <Button onClick={() => setOpenRegister(false)} variant="contained" size="large">
+                        Register Patient
+                    </Button>
                 </DialogActions>
             </Dialog>
         </Box>
