@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, CssBaseline, AppBar, Toolbar, Typography, IconButton } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu'; // Import the icon
+import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from "./Sidebar.tsx";
 import AccountMenu from "@/components/AccountMenu.tsx";
 import SearchAppBar from "@/components/SearchBar.tsx";
@@ -10,6 +10,12 @@ type LayoutProps = {
 };
 
 const Layout = ({ children }: LayoutProps) => {
+    const [mobileOpen, setMobileOpen] = useState(false);
+
+    const handleDrawerToggle = () => {
+        setMobileOpen(!mobileOpen);
+    };
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -19,13 +25,14 @@ const Layout = ({ children }: LayoutProps) => {
 
                     {/* LEFT: Menu Icon + Title */}
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                        {/* The 3 Lines (Menu Icon) */}
+                        {/* The 3 Lines (Menu Icon) - Visible only on mobile */}
                         <IconButton
                             size="large"
                             edge="start"
                             color="inherit"
                             aria-label="menu"
-                            sx={{ mr: 2 }}
+                            onClick={handleDrawerToggle}
+                            sx={{ mr: 2, display: { sm: 'none' } }}
                         >
                             <MenuIcon />
                         </IconButton>
@@ -35,7 +42,7 @@ const Layout = ({ children }: LayoutProps) => {
                         </Typography>
                     </Box>
 
-                    {/* MIDDLE: Search Bar (Now it's just the input) */}
+                    {/* MIDDLE: Search Bar */}
                     <SearchAppBar />
 
                     {/* RIGHT: Account Menu */}
@@ -44,9 +51,9 @@ const Layout = ({ children }: LayoutProps) => {
                 </Toolbar>
             </AppBar>
 
-            <Sidebar />
+            <Sidebar mobileOpen={mobileOpen} handleDrawerToggle={handleDrawerToggle} />
 
-            <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Box component="main" sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - 240px)` } }}>
                 <Toolbar />
                 {children}
             </Box>
