@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import {
     Box, Typography, Paper, List, ListItem, ListItemIcon,
-    ListItemText, Switch, Button, Divider, Alert, Snackbar
+    ListItemText, Switch, Button, Divider, Alert, ListItemButton
 } from '@mui/material';
 import WifiIcon from '@mui/icons-material/Wifi';
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LogoutIcon from '@mui/icons-material/Logout';
-import SecurityIcon from '@mui/icons-material/Security';
 import { useNavigate } from 'react-router-dom';
 
 const Settings = () => {
     const navigate = useNavigate();
     const [darkMode, setDarkMode] = useState(false);
-    const [testStatus, setTestStatus] = useState<{msg: string, type: 'success'|'error' | null}>(null);
+    // Allow the state itself to be null
+    const [testStatus, setTestStatus] = useState<{msg: string, type: 'success'|'error' | null} | null>(null);
 
     const handleLogout = () => {
         if(window.confirm("Are you sure you want to logout?")) {
@@ -70,12 +70,14 @@ const Settings = () => {
                     <Divider variant="inset" component="li" />
 
                     {/* LOGOUT */}
-                    <ListItem button onClick={handleLogout}>
-                        <ListItemIcon><LogoutIcon color="error" /></ListItemIcon>
-                        <ListItemText
-                            primary="Logout"
-                            primaryTypographyProps={{ color: 'error', fontWeight: 'bold' }}
-                        />
+                    <ListItem disablePadding>
+                        <ListItemButton onClick={handleLogout}>
+                            <ListItemIcon><LogoutIcon color="error" /></ListItemIcon>
+                            <ListItemText
+                                primary="Logout"
+                                primaryTypographyProps={{ color: 'error', fontWeight: 'bold' }}
+                            />
+                        </ListItemButton>
                     </ListItem>
                 </List>
             </Paper>

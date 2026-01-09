@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-    Box, Typography, List, ListItem, ListItemText, ListItemIcon,
+    Box, Typography, List, ListItem, ListItemButton, ListItemText, ListItemIcon,
     Checkbox, Paper, Chip
 } from '@mui/material';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
@@ -34,42 +34,43 @@ const Appointments = () => {
                         <ListItem
                             key={item.id}
                             divider
-                            button
-                            onClick={() => handleToggle(item.id)}
+                            disablePadding
                             sx={{
                                 opacity: item.done ? 0.5 : 1,
                                 textDecoration: item.done ? 'line-through' : 'none',
                                 bgcolor: item.done ? '#f5f5f5' : 'white'
                             }}
                         >
-                            <ListItemIcon>
-                                <Checkbox
-                                    edge="start"
-                                    checked={item.done}
-                                    tabIndex={-1}
-                                    disableRipple
+                            <ListItemButton onClick={() => handleToggle(item.id)}>
+                                <ListItemIcon>
+                                    <Checkbox
+                                        edge="start"
+                                        checked={item.done}
+                                        tabIndex={-1}
+                                        disableRipple
+                                    />
+                                </ListItemIcon>
+
+                                <ListItemText
+                                    primary={
+                                        <Box display="flex" alignItems="center" gap={1}>
+                                            <Typography variant="subtitle1" fontWeight="bold">
+                                                {item.name}
+                                            </Typography>
+                                            <Chip
+                                                label={item.time}
+                                                size="small"
+                                                icon={<CalendarTodayIcon />}
+                                                color="info"
+                                                variant="outlined"
+                                            />
+                                        </Box>
+                                    }
+                                    secondary={`Reason: ${item.reason}`}
                                 />
-                            </ListItemIcon>
 
-                            <ListItemText
-                                primary={
-                                    <Box display="flex" alignItems="center" gap={1}>
-                                        <Typography variant="subtitle1" fontWeight="bold">
-                                            {item.name}
-                                        </Typography>
-                                        <Chip
-                                            label={item.time}
-                                            size="small"
-                                            icon={<CalendarTodayIcon />}
-                                            color="info"
-                                            variant="outlined"
-                                        />
-                                    </Box>
-                                }
-                                secondary={`Reason: ${item.reason}`}
-                            />
-
-                            {item.done && <Chip label="COMPLETED" color="success" size="small" />}
+                                {item.done && <Chip label="COMPLETED" color="success" size="small" />}
+                            </ListItemButton>
                         </ListItem>
                     ))}
                 </List>
