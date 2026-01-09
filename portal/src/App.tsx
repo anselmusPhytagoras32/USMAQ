@@ -16,8 +16,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
 
-                {/* --- PROTECTED ROUTES (Wrapped in Layout) --- */}
-                {/* This "wildcard" path catches everything else and applies the Layout */}
+                {/* Protected Routes*/}
                 <Route path="/*" element={
                     <Layout>
                         <Routes>

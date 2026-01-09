@@ -84,7 +84,7 @@ const Login = () => {
                         </Button>
 
                         <Grid container justifyContent="center">
-                            <Grid item>
+                            <Grid>
                                 <Link component={RouterLink} to="/signup" variant="body2">
                                     {"Don't have an account? Sign Up"}
                                 </Link>
