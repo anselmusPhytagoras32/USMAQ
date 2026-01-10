@@ -17,6 +17,11 @@ public class UserController {
     // Posting the data to the database
     @PostMapping("/user")
     User newUser(@RequestBody User newUser) {
+
+        // To be removed, for debugging only
+        System.out.println("Received Username: " + newUser.getUsername());
+        System.out.println("Received Password: " + newUser.getPassword());
+
         return userRepo.save(newUser);
     }
 }
